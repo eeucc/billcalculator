@@ -9,9 +9,17 @@
     <div class="both">
       <div class="left">
         <h2 class="title" id="title">
-          <marquee dir="auto" behavior="alternate">Domestic Customer Bill Calculator</marquee>
+          <marquee dir="auto" behavior="alternate"
+            >Domestic Customer Bill Calculator</marquee
+          >
         </h2>
-
+        <div id="staff_select">
+        <label for="staff" class="staff">Are You Employee Of EEU?</label>
+        <select name="staff" id="staff">
+          <option value="non-active" selected>No</option>
+          <option value="active">Yes</option>
+        </select>
+        </div>
         <label for="bill_year">Select Year</label>
         <select name="bill_year" id="bill_year">
           <option value="" selected disabled>
@@ -54,7 +62,8 @@
           <div id="regulatoryFee" class="calculation"></div>
           <div id="vat" class="calculation"></div>
           <div id="ebcFee" class="calculation"></div>
-          <br><hr>
+          <br />
+          <hr />
           <div id="total" class="calculation"></div>
         </div>
       </div>

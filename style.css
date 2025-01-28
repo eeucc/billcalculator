@@ -170,3 +170,15 @@ footer {
   min-width: 200px;
   margin: 10px;
 }
+
+#staff_select {
+  display: flex;
+  border: 1px solid #ccc;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+#staff {
+  width: 80px;
+  margin-left: auto; 
+  border-radius: 20px;
+}
