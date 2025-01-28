@@ -154,6 +154,8 @@ function calculateBill() {
   const VAT = document.getElementById("vat");
   const ebcFee = document.getElementById("ebcFee");
   const total = document.getElementById("total");
+  const consume = document.getElementById("consumption");
+  const remark = document.getElementById("remark");
 
   if (
     isNaN(previousReading) ||
@@ -1269,12 +1271,14 @@ function calculateBill() {
       default:
         break;
     }
+    consume.textContent = "Consumption: "+consumption.toFixed(2)+" KWh";
     energyBill.textContent = "Energy Consumption Bill: "+energy_bill.toFixed(2)+" ETB";
     serviceCharge.textContent = "Service Charge: "+service_charge+" ETB";
     regulatoryFee.textContent = "Regulatory Fee: "+reg_fee.toFixed(2)+" ETB";
     VAT.textContent = "Value Added Tax (VAT): "+vat.toFixed(2)+" ETB";
     ebcFee.textContent = "EBC TV Fee: "+ebc_fee+" ETB";
     total.textContent = "Your total bill: " +(energy_bill+service_charge+reg_fee+vat+ebc_fee).toFixed(2)+" ETB";
+    remark.textContent = "This is remark"
   }
 }
 }
