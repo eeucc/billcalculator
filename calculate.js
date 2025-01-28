@@ -156,1129 +156,1172 @@ function calculateBill() {
   const total = document.getElementById("total");
   const consume = document.getElementById("consumption");
   const remark = document.getElementById("remark");
-
-  if (
-    isNaN(previousReading) ||
-    isNaN(currentReading) ||
-    currentReading <= 0 ||
-    previousReading < 0 ||
-    currentReading < previousReading
-  ) {
-    return (resultText.textContent =
-      "Please Enter Valid Required Data");
-  } else {
-    if (year != "" || quarter != ""){
-    consumption = currentReading - previousReading;
-    switch (year) {
-      case "2017":
-        if (quarter == "Quarter1"){
-          if (consumption <= 50){
-            energy_bill = consumption*tariff_data[0].energy_consumption_tariff[2017].Q1[0];
-            service_charge = tariff_data[0].service_charge[2017].Q1[0];
-            reg_fee = (energy_bill+service_charge)*0.005;
-          } else if (consumption>50 && consumption<=100){
-            energy_bill = consumption*tariff_data[0].energy_consumption_tariff[2017].Q1[1];
-            service_charge = tariff_data[0].service_charge[2017].Q1[1];
-            reg_fee = (energy_bill + service_charge)*0.005;
-            ebc_fee = 10;
-          } else if (consumption>100 && consumption<=200){
-            energy_bill = consumption*tariff_data[0].energy_consumption_tariff[2017].Q1[2];
-            service_charge = tariff_data[0].service_charge[2017].Q1[1];
-            reg_fee = (energy_bill+service_charge)*0.005;
-            ebc_fee = 10;
-          } else if (consumption>200 && consumption<=300){
-            energy_bill = consumption*tariff_data[0].energy_consumption_tariff[2017].Q1[3];
-            service_charge = tariff_data[0].service_charge[2017].Q1[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-            vat = (((consumption-200)*tariff_data[0].energy_consumption_tariff[2017].Q1[3])+service_charge)*0.15;
-          } else if (consumption>300 && consumption<=400){
-            energy_bill =consumption*tariff_data[0].energy_consumption_tariff[2017].Q1[4];
-            service_charge = tariff_data[0].service_charge[2017].Q1[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-            vat =(((consumption-200)*tariff_data[0].energy_consumption_tariff[2017].Q1[4])+service_charge)*0.15;
-          } else if (consumption>400 && consumption<=500){
-            energy_bill =consumption*tariff_data[0].energy_consumption_tariff[2017].Q1[5];
-            service_charge = tariff_data[0].service_charge[2017].Q1[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-            vat =(((consumption-200)*tariff_data[0].energy_consumption_tariff[2017].Q1[5])+service_charge)*0.15;
-          } else if (consumption>500){
-            energy_bill =consumption*tariff_data[0].energy_consumption_tariff[2017].Q1[6];
-            service_charge = tariff_data[0].service_charge[2017].Q1[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-            vat =(((consumption-200)*tariff_data[0].energy_consumption_tariff[2017].Q1[6])+service_charge)*0.15;
-          }
-        } else if (quarter == "Quarter2"){
-          if (consumption <= 50) {
-            energy_bill = consumption*tariff_data[0].energy_consumption_tariff[2017].Q2[0];
-            service_charge = tariff_data[0].service_charge[2017].Q2[0];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-          } else if (consumption > 50 && consumption <= 100) {
-            energy_bill = consumption*tariff_data[0].energy_consumption_tariff[2017].Q2[1];
-            service_charge = tariff_data[0].service_charge[2017].Q2[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-          } else if (consumption > 100 && consumption <= 200) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2017].Q2[2];
-            service_charge = tariff_data[0].service_charge[2017].Q2[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-          } else if (consumption > 200 && consumption <= 300) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2017].Q2[3];
-            service_charge = tariff_data[0].service_charge[2017].Q2[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-            vat =
-              ((consumption - 200) *
-                tariff_data[0].energy_consumption_tariff[2017].Q2[3] +
-                service_charge) *
-              0.15;
-          } else if (consumption > 300 && consumption <= 400) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2017].Q2[4];
-            service_charge = tariff_data[0].service_charge[2017].Q2[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-            vat =
-              ((consumption - 200) *
-                tariff_data[0].energy_consumption_tariff[2017].Q2[4] +
-                service_charge) *
-              0.15;
-          } else if (consumption > 400 && consumption <= 500) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2017].Q2[5];
-            service_charge = tariff_data[0].service_charge[2017].Q2[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-            vat =
-              ((consumption - 200) *
-                tariff_data[0].energy_consumption_tariff[2017].Q2[5] +
-                service_charge) *
-              0.15;
-          } else if (consumption > 500) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2017].Q2[6];
-            service_charge = tariff_data[0].service_charge[2017].Q2[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-            vat =
-              ((consumption - 200) *
-                tariff_data[0].energy_consumption_tariff[2017].Q2[6] +
-                service_charge) *
-              0.15;
-          }
-        } else if (quarter == "Quarter3"){
-          if (consumption <= 50) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2017].Q3[0];
-            service_charge = tariff_data[0].service_charge[2017].Q3[0];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-          } else if (consumption > 50 && consumption <= 100) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2017].Q3[1];
-            service_charge = tariff_data[0].service_charge[2017].Q3[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-          } else if (consumption > 100 && consumption <= 200) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2017].Q3[2];
-            service_charge = tariff_data[0].service_charge[2017].Q3[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-          } else if (consumption > 200 && consumption <= 300) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2017].Q3[3];
-            service_charge = tariff_data[0].service_charge[2017].Q3[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-            vat =
-              ((consumption - 200) *
-                tariff_data[0].energy_consumption_tariff[2017].Q3[3] +
-                service_charge) *
-              0.15;
-          } else if (consumption > 300 && consumption <= 400) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2017].Q3[4];
-            service_charge = tariff_data[0].service_charge[2017].Q3[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-            vat =
-              ((consumption - 200) *
-                tariff_data[0].energy_consumption_tariff[2017].Q3[4] +
-                service_charge) *
-              0.15;
-          } else if (consumption > 400 && consumption <= 500) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2017].Q3[5];
-            service_charge = tariff_data[0].service_charge[2017].Q3[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-            vat =
-              ((consumption - 200) *
-                tariff_data[0].energy_consumption_tariff[2017].Q3[5] +
-                service_charge) *
-              0.15;
-          } else if (consumption > 500) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2017].Q3[6];
-            service_charge = tariff_data[0].service_charge[2017].Q3[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-            vat =
-              ((consumption - 200) *
-                tariff_data[0].energy_consumption_tariff[2017].Q3[6] +
-                service_charge) *
-              0.15;
-          }
-        } else if (quarter == "Quarter4"){
-          if (consumption <= 50) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2017].Q4[0];
-            service_charge = tariff_data[0].service_charge[2017].Q4[0];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-          } else if (consumption > 50 && consumption <= 100) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2017].Q4[1];
-            service_charge = tariff_data[0].service_charge[2017].Q4[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-          } else if (consumption > 100 && consumption <= 200) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2017].Q4[2];
-            service_charge = tariff_data[0].service_charge[2017].Q4[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-          } else if (consumption > 200 && consumption <= 300) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2017].Q4[3];
-            service_charge = tariff_data[0].service_charge[2017].Q4[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-            vat =
-              ((consumption - 200) *
-                tariff_data[0].energy_consumption_tariff[2017].Q4[3] +
-                service_charge) *
-              0.15;
-          } else if (consumption > 300 && consumption <= 400) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2017].Q4[4];
-            service_charge = tariff_data[0].service_charge[2017].Q4[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-            vat =
-              ((consumption - 200) *
-                tariff_data[0].energy_consumption_tariff[2017].Q4[4] +
-                service_charge) *
-              0.15;
-          } else if (consumption > 400 && consumption <= 500) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2017].Q4[5];
-            service_charge = tariff_data[0].service_charge[2017].Q4[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-            vat =
-              ((consumption - 200) *
-                tariff_data[0].energy_consumption_tariff[2017].Q4[5] +
-                service_charge) *
-              0.15;
-          } else if (consumption > 500) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2017].Q4[6];
-            service_charge = tariff_data[0].service_charge[2017].Q4[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-            vat =
-              ((consumption - 200) *
-                tariff_data[0].energy_consumption_tariff[2017].Q4[6] +
-                service_charge) *
-              0.15;
-          }
+  const staff = document.getElementById("staff").value;
+    if (
+      isNaN(previousReading) ||
+      isNaN(currentReading) ||
+      currentReading <= 0 ||
+      previousReading < 0 ||
+      currentReading < previousReading
+    ) {
+      return (resultText.textContent = "Please Enter Valid Required Data");
+    } else {
+      if (year != "" || quarter != "") {
+        consumption = currentReading - previousReading;
+        if (staff == "no"){
+        switch (year) {
+          case "2017":
+            if (quarter == "Quarter1") {
+              if (consumption <= 50) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2017].Q1[0];
+                service_charge = tariff_data[0].service_charge[2017].Q1[0];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+              } else if (consumption > 50 && consumption <= 100) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2017].Q1[1];
+                service_charge = tariff_data[0].service_charge[2017].Q1[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+              } else if (consumption > 100 && consumption <= 200) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2017].Q1[2];
+                service_charge = tariff_data[0].service_charge[2017].Q1[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+              } else if (consumption > 200 && consumption <= 300) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2017].Q1[3];
+                service_charge = tariff_data[0].service_charge[2017].Q1[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+                vat =
+                  ((consumption - 200) *
+                    tariff_data[0].energy_consumption_tariff[2017].Q1[3] +
+                    service_charge) *
+                  0.15;
+              } else if (consumption > 300 && consumption <= 400) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2017].Q1[4];
+                service_charge = tariff_data[0].service_charge[2017].Q1[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+                vat =
+                  ((consumption - 200) *
+                    tariff_data[0].energy_consumption_tariff[2017].Q1[4] +
+                    service_charge) *
+                  0.15;
+              } else if (consumption > 400 && consumption <= 500) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2017].Q1[5];
+                service_charge = tariff_data[0].service_charge[2017].Q1[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+                vat =
+                  ((consumption - 200) *
+                    tariff_data[0].energy_consumption_tariff[2017].Q1[5] +
+                    service_charge) *
+                  0.15;
+              } else if (consumption > 500) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2017].Q1[6];
+                service_charge = tariff_data[0].service_charge[2017].Q1[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+                vat =
+                  ((consumption - 200) *
+                    tariff_data[0].energy_consumption_tariff[2017].Q1[6] +
+                    service_charge) *
+                  0.15;
+              }
+            } else if (quarter == "Quarter2") {
+              if (consumption <= 50) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2017].Q2[0];
+                service_charge = tariff_data[0].service_charge[2017].Q2[0];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+              } else if (consumption > 50 && consumption <= 100) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2017].Q2[1];
+                service_charge = tariff_data[0].service_charge[2017].Q2[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+              } else if (consumption > 100 && consumption <= 200) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2017].Q2[2];
+                service_charge = tariff_data[0].service_charge[2017].Q2[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+              } else if (consumption > 200 && consumption <= 300) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2017].Q2[3];
+                service_charge = tariff_data[0].service_charge[2017].Q2[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+                vat =
+                  ((consumption - 200) *
+                    tariff_data[0].energy_consumption_tariff[2017].Q2[3] +
+                    service_charge) *
+                  0.15;
+              } else if (consumption > 300 && consumption <= 400) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2017].Q2[4];
+                service_charge = tariff_data[0].service_charge[2017].Q2[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+                vat =
+                  ((consumption - 200) *
+                    tariff_data[0].energy_consumption_tariff[2017].Q2[4] +
+                    service_charge) *
+                  0.15;
+              } else if (consumption > 400 && consumption <= 500) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2017].Q2[5];
+                service_charge = tariff_data[0].service_charge[2017].Q2[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+                vat =
+                  ((consumption - 200) *
+                    tariff_data[0].energy_consumption_tariff[2017].Q2[5] +
+                    service_charge) *
+                  0.15;
+              } else if (consumption > 500) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2017].Q2[6];
+                service_charge = tariff_data[0].service_charge[2017].Q2[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+                vat =
+                  ((consumption - 200) *
+                    tariff_data[0].energy_consumption_tariff[2017].Q2[6] +
+                    service_charge) *
+                  0.15;
+              }
+            } else if (quarter == "Quarter3") {
+              if (consumption <= 50) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2017].Q3[0];
+                service_charge = tariff_data[0].service_charge[2017].Q3[0];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+              } else if (consumption > 50 && consumption <= 100) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2017].Q3[1];
+                service_charge = tariff_data[0].service_charge[2017].Q3[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+              } else if (consumption > 100 && consumption <= 200) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2017].Q3[2];
+                service_charge = tariff_data[0].service_charge[2017].Q3[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+              } else if (consumption > 200 && consumption <= 300) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2017].Q3[3];
+                service_charge = tariff_data[0].service_charge[2017].Q3[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+                vat =
+                  ((consumption - 200) *
+                    tariff_data[0].energy_consumption_tariff[2017].Q3[3] +
+                    service_charge) *
+                  0.15;
+              } else if (consumption > 300 && consumption <= 400) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2017].Q3[4];
+                service_charge = tariff_data[0].service_charge[2017].Q3[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+                vat =
+                  ((consumption - 200) *
+                    tariff_data[0].energy_consumption_tariff[2017].Q3[4] +
+                    service_charge) *
+                  0.15;
+              } else if (consumption > 400 && consumption <= 500) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2017].Q3[5];
+                service_charge = tariff_data[0].service_charge[2017].Q3[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+                vat =
+                  ((consumption - 200) *
+                    tariff_data[0].energy_consumption_tariff[2017].Q3[5] +
+                    service_charge) *
+                  0.15;
+              } else if (consumption > 500) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2017].Q3[6];
+                service_charge = tariff_data[0].service_charge[2017].Q3[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+                vat =
+                  ((consumption - 200) *
+                    tariff_data[0].energy_consumption_tariff[2017].Q3[6] +
+                    service_charge) *
+                  0.15;
+              }
+            } else if (quarter == "Quarter4") {
+              if (consumption <= 50) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2017].Q4[0];
+                service_charge = tariff_data[0].service_charge[2017].Q4[0];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+              } else if (consumption > 50 && consumption <= 100) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2017].Q4[1];
+                service_charge = tariff_data[0].service_charge[2017].Q4[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+              } else if (consumption > 100 && consumption <= 200) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2017].Q4[2];
+                service_charge = tariff_data[0].service_charge[2017].Q4[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+              } else if (consumption > 200 && consumption <= 300) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2017].Q4[3];
+                service_charge = tariff_data[0].service_charge[2017].Q4[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+                vat =
+                  ((consumption - 200) *
+                    tariff_data[0].energy_consumption_tariff[2017].Q4[3] +
+                    service_charge) *
+                  0.15;
+              } else if (consumption > 300 && consumption <= 400) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2017].Q4[4];
+                service_charge = tariff_data[0].service_charge[2017].Q4[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+                vat =
+                  ((consumption - 200) *
+                    tariff_data[0].energy_consumption_tariff[2017].Q4[4] +
+                    service_charge) *
+                  0.15;
+              } else if (consumption > 400 && consumption <= 500) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2017].Q4[5];
+                service_charge = tariff_data[0].service_charge[2017].Q4[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+                vat =
+                  ((consumption - 200) *
+                    tariff_data[0].energy_consumption_tariff[2017].Q4[5] +
+                    service_charge) *
+                  0.15;
+              } else if (consumption > 500) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2017].Q4[6];
+                service_charge = tariff_data[0].service_charge[2017].Q4[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+                vat =
+                  ((consumption - 200) *
+                    tariff_data[0].energy_consumption_tariff[2017].Q4[6] +
+                    service_charge) *
+                  0.15;
+              }
+            }
+            break;
+          case "2018":
+            if (quarter == "Quarter1") {
+              if (consumption <= 50) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2018].Q1[0];
+                service_charge = tariff_data[0].service_charge[2018].Q1[0];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+              } else if (consumption > 50 && consumption <= 100) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2018].Q1[1];
+                service_charge = tariff_data[0].service_charge[2018].Q1[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+              } else if (consumption > 100 && consumption <= 200) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2018].Q1[2];
+                service_charge = tariff_data[0].service_charge[2018].Q1[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+              } else if (consumption > 200 && consumption <= 300) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2018].Q1[3];
+                service_charge = tariff_data[0].service_charge[2018].Q1[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+                vat =
+                  ((consumption - 200) *
+                    tariff_data[0].energy_consumption_tariff[2018].Q1[3] +
+                    service_charge) *
+                  0.15;
+              } else if (consumption > 300 && consumption <= 400) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2018].Q1[4];
+                service_charge = tariff_data[0].service_charge[2018].Q1[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+                vat =
+                  ((consumption - 200) *
+                    tariff_data[0].energy_consumption_tariff[2018].Q1[4] +
+                    service_charge) *
+                  0.15;
+              } else if (consumption > 400 && consumption <= 500) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2018].Q1[5];
+                service_charge = tariff_data[0].service_charge[2018].Q1[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+                vat =
+                  ((consumption - 200) *
+                    tariff_data[0].energy_consumption_tariff[2018].Q1[5] +
+                    service_charge) *
+                  0.15;
+              } else if (consumption > 500) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2018].Q1[6];
+                service_charge = tariff_data[0].service_charge[2018].Q1[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+                vat =
+                  ((consumption - 200) *
+                    tariff_data[0].energy_consumption_tariff[2018].Q1[6] +
+                    service_charge) *
+                  0.15;
+              }
+            } else if (quarter == "Quarter2") {
+              if (consumption <= 50) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2018].Q2[0];
+                service_charge = tariff_data[0].service_charge[2018].Q2[0];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+              } else if (consumption > 50 && consumption <= 100) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2018].Q2[1];
+                service_charge = tariff_data[0].service_charge[2018].Q2[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+              } else if (consumption > 100 && consumption <= 200) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2018].Q2[2];
+                service_charge = tariff_data[0].service_charge[2017].Q2[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+              } else if (consumption > 200 && consumption <= 300) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2017].Q2[3];
+                service_charge = tariff_data[0].service_charge[2018].Q2[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+                vat =
+                  ((consumption - 200) *
+                    tariff_data[0].energy_consumption_tariff[2018].Q2[3] +
+                    service_charge) *
+                  0.15;
+              } else if (consumption > 300 && consumption <= 400) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2018].Q2[4];
+                service_charge = tariff_data[0].service_charge[2018].Q2[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+                vat =
+                  ((consumption - 200) *
+                    tariff_data[0].energy_consumption_tariff[2018].Q2[4] +
+                    service_charge) *
+                  0.15;
+              } else if (consumption > 400 && consumption <= 500) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2018].Q2[5];
+                service_charge = tariff_data[0].service_charge[2018].Q2[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+                vat =
+                  ((consumption - 200) *
+                    tariff_data[0].energy_consumption_tariff[2018].Q2[5] +
+                    service_charge) *
+                  0.15;
+              } else if (consumption > 500) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2018].Q2[6];
+                service_charge = tariff_data[0].service_charge[2018].Q2[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+                vat =
+                  ((consumption - 200) *
+                    tariff_data[0].energy_consumption_tariff[2018].Q2[6] +
+                    service_charge) *
+                  0.15;
+              }
+            } else if (quarter == "Quarter3") {
+              if (consumption <= 50) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2018].Q3[0];
+                service_charge = tariff_data[0].service_charge[2018].Q3[0];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+              } else if (consumption > 50 && consumption <= 100) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2018].Q3[1];
+                service_charge = tariff_data[0].service_charge[2018].Q3[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+              } else if (consumption > 100 && consumption <= 200) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2018].Q3[2];
+                service_charge = tariff_data[0].service_charge[2018].Q3[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+              } else if (consumption > 200 && consumption <= 300) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2018].Q3[3];
+                service_charge = tariff_data[0].service_charge[2018].Q3[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+                vat =
+                  ((consumption - 200) *
+                    tariff_data[0].energy_consumption_tariff[2018].Q3[3] +
+                    service_charge) *
+                  0.15;
+              } else if (consumption > 300 && consumption <= 400) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2018].Q3[4];
+                service_charge = tariff_data[0].service_charge[2018].Q3[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+                vat =
+                  ((consumption - 200) *
+                    tariff_data[0].energy_consumption_tariff[2018].Q3[4] +
+                    service_charge) *
+                  0.15;
+              } else if (consumption > 400 && consumption <= 500) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2018].Q3[5];
+                service_charge = tariff_data[0].service_charge[2018].Q3[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+                vat =
+                  ((consumption - 200) *
+                    tariff_data[0].energy_consumption_tariff[2018].Q3[5] +
+                    service_charge) *
+                  0.15;
+              } else if (consumption > 500) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2018].Q3[6];
+                service_charge = tariff_data[0].service_charge[2018].Q3[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+                vat =
+                  ((consumption - 200) *
+                    tariff_data[0].energy_consumption_tariff[2018].Q3[6] +
+                    service_charge) *
+                  0.15;
+              }
+            } else if (quarter == "Quarter4") {
+              if (consumption <= 50) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2018].Q4[0];
+                service_charge = tariff_data[0].service_charge[2018].Q4[0];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+              } else if (consumption > 50 && consumption <= 100) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2018].Q4[1];
+                service_charge = tariff_data[0].service_charge[2018].Q4[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+              } else if (consumption > 100 && consumption <= 200) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2018].Q4[2];
+                service_charge = tariff_data[0].service_charge[2018].Q4[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+              } else if (consumption > 200 && consumption <= 300) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2018].Q4[3];
+                service_charge = tariff_data[0].service_charge[2018].Q4[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+                vat =
+                  ((consumption - 200) *
+                    tariff_data[0].energy_consumption_tariff[2018].Q4[3] +
+                    service_charge) *
+                  0.15;
+              } else if (consumption > 300 && consumption <= 400) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2018].Q4[4];
+                service_charge = tariff_data[0].service_charge[2018].Q4[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+                vat =
+                  ((consumption - 200) *
+                    tariff_data[0].energy_consumption_tariff[2018].Q4[4] +
+                    service_charge) *
+                  0.15;
+              } else if (consumption > 400 && consumption <= 500) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2018].Q4[5];
+                service_charge = tariff_data[0].service_charge[2018].Q4[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+                vat =
+                  ((consumption - 200) *
+                    tariff_data[0].energy_consumption_tariff[2018].Q4[5] +
+                    service_charge) *
+                  0.15;
+              } else if (consumption > 500) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2018].Q4[6];
+                service_charge = tariff_data[0].service_charge[2018].Q4[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+                vat =
+                  ((consumption - 200) *
+                    tariff_data[0].energy_consumption_tariff[2018].Q4[6] +
+                    service_charge) *
+                  0.15;
+              }
+            }
+            break;
+          case "2019":
+            if (quarter == "Quarter1") {
+              if (consumption <= 50) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2019].Q1[0];
+                service_charge = tariff_data[0].service_charge[2019].Q1[0];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+              } else if (consumption > 50 && consumption <= 100) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2019].Q1[1];
+                service_charge = tariff_data[0].service_charge[2019].Q1[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+              } else if (consumption > 100 && consumption <= 200) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2019].Q1[2];
+                service_charge = tariff_data[0].service_charge[2019].Q1[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+              } else if (consumption > 200 && consumption <= 300) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2019].Q1[3];
+                service_charge = tariff_data[0].service_charge[2019].Q1[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+                vat =
+                  ((consumption - 200) *
+                    tariff_data[0].energy_consumption_tariff[2019].Q1[3] +
+                    service_charge) *
+                  0.15;
+              } else if (consumption > 300 && consumption <= 400) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2019].Q1[4];
+                service_charge = tariff_data[0].service_charge[2019].Q1[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+                vat =
+                  ((consumption - 200) *
+                    tariff_data[0].energy_consumption_tariff[2019].Q1[4] +
+                    service_charge) *
+                  0.15;
+              } else if (consumption > 400 && consumption <= 500) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2019].Q1[5];
+                service_charge = tariff_data[0].service_charge[2019].Q1[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+                vat =
+                  ((consumption - 200) *
+                    tariff_data[0].energy_consumption_tariff[2019].Q1[5] +
+                    service_charge) *
+                  0.15;
+              } else if (consumption > 500) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2019].Q1[6];
+                service_charge = tariff_data[0].service_charge[2019].Q1[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+                vat =
+                  ((consumption - 200) *
+                    tariff_data[0].energy_consumption_tariff[2019].Q1[6] +
+                    service_charge) *
+                  0.15;
+              }
+            } else if (quarter == "Quarter2") {
+              if (consumption <= 50) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2019].Q2[0];
+                service_charge = tariff_data[0].service_charge[2019].Q2[0];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+              } else if (consumption > 50 && consumption <= 100) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2019].Q2[1];
+                service_charge = tariff_data[0].service_charge[2019].Q2[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+              } else if (consumption > 100 && consumption <= 200) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2019].Q2[2];
+                service_charge = tariff_data[0].service_charge[2019].Q2[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+              } else if (consumption > 200 && consumption <= 300) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2019].Q2[3];
+                service_charge = tariff_data[0].service_charge[2019].Q2[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+                vat =
+                  ((consumption - 200) *
+                    tariff_data[0].energy_consumption_tariff[2019].Q2[3] +
+                    service_charge) *
+                  0.15;
+              } else if (consumption > 300 && consumption <= 400) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2019].Q2[4];
+                service_charge = tariff_data[0].service_charge[2019].Q2[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+                vat =
+                  ((consumption - 200) *
+                    tariff_data[0].energy_consumption_tariff[2019].Q2[4] +
+                    service_charge) *
+                  0.15;
+              } else if (consumption > 400 && consumption <= 500) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2019].Q2[5];
+                service_charge = tariff_data[0].service_charge[2019].Q2[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+                vat =
+                  ((consumption - 200) *
+                    tariff_data[0].energy_consumption_tariff[2019].Q2[5] +
+                    service_charge) *
+                  0.15;
+              } else if (consumption > 500) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2019].Q2[6];
+                service_charge = tariff_data[0].service_charge[2019].Q2[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+                vat =
+                  ((consumption - 200) *
+                    tariff_data[0].energy_consumption_tariff[2019].Q2[6] +
+                    service_charge) *
+                  0.15;
+              }
+            } else if (quarter == "Quarter3") {
+              if (consumption <= 50) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2019].Q3[0];
+                service_charge = tariff_data[0].service_charge[2019].Q3[0];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+              } else if (consumption > 50 && consumption <= 100) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2019].Q3[1];
+                service_charge = tariff_data[0].service_charge[2019].Q3[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+              } else if (consumption > 100 && consumption <= 200) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2019].Q3[2];
+                service_charge = tariff_data[0].service_charge[2019].Q3[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+              } else if (consumption > 200 && consumption <= 300) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2019].Q3[3];
+                service_charge = tariff_data[0].service_charge[2019].Q3[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+                vat =
+                  ((consumption - 200) *
+                    tariff_data[0].energy_consumption_tariff[2019].Q3[3] +
+                    service_charge) *
+                  0.15;
+              } else if (consumption > 300 && consumption <= 400) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2019].Q3[4];
+                service_charge = tariff_data[0].service_charge[2019].Q3[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+                vat =
+                  ((consumption - 200) *
+                    tariff_data[0].energy_consumption_tariff[2019].Q3[4] +
+                    service_charge) *
+                  0.15;
+              } else if (consumption > 400 && consumption <= 500) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2019].Q3[5];
+                service_charge = tariff_data[0].service_charge[2019].Q3[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+                vat =
+                  ((consumption - 200) *
+                    tariff_data[0].energy_consumption_tariff[2019].Q3[5] +
+                    service_charge) *
+                  0.15;
+              } else if (consumption > 500) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2019].Q3[6];
+                service_charge = tariff_data[0].service_charge[2019].Q3[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+                vat =
+                  ((consumption - 200) *
+                    tariff_data[0].energy_consumption_tariff[2019].Q3[6] +
+                    service_charge) *
+                  0.15;
+              }
+            } else if (quarter == "Quarter4") {
+              if (consumption <= 50) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2019].Q4[0];
+                service_charge = tariff_data[0].service_charge[2019].Q4[0];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+              } else if (consumption > 50 && consumption <= 100) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2019].Q4[1];
+                service_charge = tariff_data[0].service_charge[2019].Q4[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+              } else if (consumption > 100 && consumption <= 200) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2019].Q4[2];
+                service_charge = tariff_data[0].service_charge[2019].Q4[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+              } else if (consumption > 200 && consumption <= 300) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2019].Q4[3];
+                service_charge = tariff_data[0].service_charge[2019].Q4[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+                vat =
+                  ((consumption - 200) *
+                    tariff_data[0].energy_consumption_tariff[2019].Q4[3] +
+                    service_charge) *
+                  0.15;
+              } else if (consumption > 300 && consumption <= 400) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2019].Q4[4];
+                service_charge = tariff_data[0].service_charge[2019].Q4[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+                vat =
+                  ((consumption - 200) *
+                    tariff_data[0].energy_consumption_tariff[2019].Q4[4] +
+                    service_charge) *
+                  0.15;
+              } else if (consumption > 400 && consumption <= 500) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2019].Q4[5];
+                service_charge = tariff_data[0].service_charge[2019].Q4[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+                vat =
+                  ((consumption - 200) *
+                    tariff_data[0].energy_consumption_tariff[2019].Q4[5] +
+                    service_charge) *
+                  0.15;
+              } else if (consumption > 500) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2019].Q4[6];
+                service_charge = tariff_data[0].service_charge[2019].Q4[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+                vat =
+                  ((consumption - 200) *
+                    tariff_data[0].energy_consumption_tariff[2019].Q4[6] +
+                    service_charge) *
+                  0.15;
+              }
+            }
+            break;
+          case "2020":
+            if (quarter == "Quarter1") {
+              if (consumption <= 50) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2020].Q1[0];
+                service_charge = tariff_data[0].service_charge[2020].Q1[0];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+              } else if (consumption > 50 && consumption <= 100) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2020].Q1[1];
+                service_charge = tariff_data[0].service_charge[2020].Q1[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+              } else if (consumption > 100 && consumption <= 200) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2020].Q1[2];
+                service_charge = tariff_data[0].service_charge[2020].Q1[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+              } else if (consumption > 200 && consumption <= 300) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2020].Q1[3];
+                service_charge = tariff_data[0].service_charge[2020].Q1[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+                vat =
+                  ((consumption - 200) *
+                    tariff_data[0].energy_consumption_tariff[2020].Q1[3] +
+                    service_charge) *
+                  0.15;
+              } else if (consumption > 300 && consumption <= 400) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2020].Q1[4];
+                service_charge = tariff_data[0].service_charge[2020].Q1[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+                vat =
+                  ((consumption - 200) *
+                    tariff_data[0].energy_consumption_tariff[2020].Q1[4] +
+                    service_charge) *
+                  0.15;
+              } else if (consumption > 400 && consumption <= 500) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2020].Q1[5];
+                service_charge = tariff_data[0].service_charge[2020].Q1[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+                vat =
+                  ((consumption - 200) *
+                    tariff_data[0].energy_consumption_tariff[2020].Q1[5] +
+                    service_charge) *
+                  0.15;
+              } else if (consumption > 500) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2020].Q1[6];
+                service_charge = tariff_data[0].service_charge[2020].Q1[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+                vat =
+                  ((consumption - 200) *
+                    tariff_data[0].energy_consumption_tariff[2020].Q1[6] +
+                    service_charge) *
+                  0.15;
+              }
+            } else if (quarter == "Quarter2") {
+              if (consumption <= 50) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2020].Q2[0];
+                service_charge = tariff_data[0].service_charge[2020].Q2[0];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+              } else if (consumption > 50 && consumption <= 100) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2020].Q2[1];
+                service_charge = tariff_data[0].service_charge[2020].Q2[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+              } else if (consumption > 100 && consumption <= 200) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2020].Q2[2];
+                service_charge = tariff_data[0].service_charge[2020].Q2[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+              } else if (consumption > 200 && consumption <= 300) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2020].Q2[3];
+                service_charge = tariff_data[0].service_charge[2020].Q2[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+                vat =
+                  ((consumption - 200) *
+                    tariff_data[0].energy_consumption_tariff[2020].Q2[3] +
+                    service_charge) *
+                  0.15;
+              } else if (consumption > 300 && consumption <= 400) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2020].Q2[4];
+                service_charge = tariff_data[0].service_charge[2020].Q2[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+                vat =
+                  ((consumption - 200) *
+                    tariff_data[0].energy_consumption_tariff[2020].Q2[4] +
+                    service_charge) *
+                  0.15;
+              } else if (consumption > 400 && consumption <= 500) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2020].Q2[5];
+                service_charge = tariff_data[0].service_charge[2020].Q2[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+                vat =
+                  ((consumption - 200) *
+                    tariff_data[0].energy_consumption_tariff[2020].Q2[5] +
+                    service_charge) *
+                  0.15;
+              } else if (consumption > 500) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2020].Q2[6];
+                service_charge = tariff_data[0].service_charge[2020].Q2[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+                vat =
+                  ((consumption - 200) *
+                    tariff_data[0].energy_consumption_tariff[2020].Q2[6] +
+                    service_charge) *
+                  0.15;
+              }
+            } else if (quarter == "Quarter3") {
+              if (consumption <= 50) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2020].Q3[0];
+                service_charge = tariff_data[0].service_charge[2020].Q3[0];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+              } else if (consumption > 50 && consumption <= 100) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2020].Q3[1];
+                service_charge = tariff_data[0].service_charge[2020].Q3[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+              } else if (consumption > 100 && consumption <= 200) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2020].Q3[2];
+                service_charge = tariff_data[0].service_charge[2020].Q3[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+              } else if (consumption > 200 && consumption <= 300) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2020].Q3[3];
+                service_charge = tariff_data[0].service_charge[2020].Q3[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+                vat =
+                  ((consumption - 200) *
+                    tariff_data[0].energy_consumption_tariff[2020].Q3[3] +
+                    service_charge) *
+                  0.15;
+              } else if (consumption > 300 && consumption <= 400) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2020].Q3[4];
+                service_charge = tariff_data[0].service_charge[2020].Q3[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+                vat =
+                  ((consumption - 200) *
+                    tariff_data[0].energy_consumption_tariff[2020].Q3[4] +
+                    service_charge) *
+                  0.15;
+              } else if (consumption > 400 && consumption <= 500) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2020].Q3[5];
+                service_charge = tariff_data[0].service_charge[2020].Q3[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+                vat =
+                  ((consumption - 200) *
+                    tariff_data[0].energy_consumption_tariff[2020].Q3[5] +
+                    service_charge) *
+                  0.15;
+              } else if (consumption > 500) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2020].Q3[6];
+                service_charge = tariff_data[0].service_charge[2020].Q3[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+                vat =
+                  ((consumption - 200) *
+                    tariff_data[0].energy_consumption_tariff[2020].Q3[6] +
+                    service_charge) *
+                  0.15;
+              }
+            } else if (quarter == "Quarter4") {
+              if (consumption <= 50) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2020].Q4[0];
+                service_charge = tariff_data[0].service_charge[2020].Q4[0];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+              } else if (consumption > 50 && consumption <= 100) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2020].Q4[1];
+                service_charge = tariff_data[0].service_charge[2020].Q4[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+              } else if (consumption > 100 && consumption <= 200) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2020].Q4[2];
+                service_charge = tariff_data[0].service_charge[2020].Q4[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+              } else if (consumption > 200 && consumption <= 300) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2020].Q4[3];
+                service_charge = tariff_data[0].service_charge[2020].Q4[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+                vat =
+                  ((consumption - 200) *
+                    tariff_data[0].energy_consumption_tariff[2020].Q4[3] +
+                    service_charge) *
+                  0.15;
+              } else if (consumption > 300 && consumption <= 400) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2020].Q4[4];
+                service_charge = tariff_data[0].service_charge[2020].Q4[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+                vat =
+                  ((consumption - 200) *
+                    tariff_data[0].energy_consumption_tariff[2020].Q4[4] +
+                    service_charge) *
+                  0.15;
+              } else if (consumption > 400 && consumption <= 500) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2020].Q4[5];
+                service_charge = tariff_data[0].service_charge[2020].Q4[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+                vat =
+                  ((consumption - 200) *
+                    tariff_data[0].energy_consumption_tariff[2020].Q4[5] +
+                    service_charge) *
+                  0.15;
+              } else if (consumption > 500) {
+                energy_bill =
+                  consumption *
+                  tariff_data[0].energy_consumption_tariff[2020].Q4[6];
+                service_charge = tariff_data[0].service_charge[2020].Q4[1];
+                reg_fee = (energy_bill + service_charge) * 0.005;
+                ebc_fee = 10;
+                vat =
+                  ((consumption - 200) *
+                    tariff_data[0].energy_consumption_tariff[2020].Q4[6] +
+                    service_charge) *
+                  0.15;
+              }
+            }
+            break;
+          default:
+            break;
+        }} else if (staff == "active" || staff == "retired") {
+          return (resultText.textContent = "Under Development");
         }
-        break;
-      case "2018":
-        if (quarter == "Quarter1") {
-          if (consumption <= 50) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2018].Q1[0];
-            service_charge = tariff_data[0].service_charge[2018].Q1[0];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-          } else if (consumption > 50 && consumption <= 100) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2018].Q1[1];
-            service_charge = tariff_data[0].service_charge[2018].Q1[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-          } else if (consumption > 100 && consumption <= 200) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2018].Q1[2];
-            service_charge = tariff_data[0].service_charge[2018].Q1[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-          } else if (consumption > 200 && consumption <= 300) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2018].Q1[3];
-            service_charge = tariff_data[0].service_charge[2018].Q1[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-            vat =
-              ((consumption - 200) *
-                tariff_data[0].energy_consumption_tariff[2018].Q1[3] +
-                service_charge) *
-              0.15;
-          } else if (consumption > 300 && consumption <= 400) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2018].Q1[4];
-            service_charge = tariff_data[0].service_charge[2018].Q1[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-            vat =
-              ((consumption - 200) *
-                tariff_data[0].energy_consumption_tariff[2018].Q1[4] +
-                service_charge) *
-              0.15;
-          } else if (consumption > 400 && consumption <= 500) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2018].Q1[5];
-            service_charge = tariff_data[0].service_charge[2018].Q1[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-            vat =
-              ((consumption - 200) *
-                tariff_data[0].energy_consumption_tariff[2018].Q1[5] +
-                service_charge) *
-              0.15;
-          } else if (consumption > 500) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2018].Q1[6];
-            service_charge = tariff_data[0].service_charge[2018].Q1[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-            vat =
-              ((consumption - 200) *
-                tariff_data[0].energy_consumption_tariff[2018].Q1[6] +
-                service_charge) *
-              0.15;
-          }
-        } else if (quarter == "Quarter2") {
-          if (consumption <= 50) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2018].Q2[0];
-            service_charge = tariff_data[0].service_charge[2018].Q2[0];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-          } else if (consumption > 50 && consumption <= 100) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2018].Q2[1];
-            service_charge = tariff_data[0].service_charge[2018].Q2[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-          } else if (consumption > 100 && consumption <= 200) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2018].Q2[2];
-            service_charge = tariff_data[0].service_charge[2017].Q2[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-          } else if (consumption > 200 && consumption <= 300) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2017].Q2[3];
-            service_charge = tariff_data[0].service_charge[2018].Q2[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-            vat =
-              ((consumption - 200) *
-                tariff_data[0].energy_consumption_tariff[2018].Q2[3] +
-                service_charge) *
-              0.15;
-          } else if (consumption > 300 && consumption <= 400) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2018].Q2[4];
-            service_charge = tariff_data[0].service_charge[2018].Q2[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-            vat =
-              ((consumption - 200) *
-                tariff_data[0].energy_consumption_tariff[2018].Q2[4] +
-                service_charge) *
-              0.15;
-          } else if (consumption > 400 && consumption <= 500) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2018].Q2[5];
-            service_charge = tariff_data[0].service_charge[2018].Q2[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-            vat =
-              ((consumption - 200) *
-                tariff_data[0].energy_consumption_tariff[2018].Q2[5] +
-                service_charge) *
-              0.15;
-          } else if (consumption > 500) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2018].Q2[6];
-            service_charge = tariff_data[0].service_charge[2018].Q2[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-            vat =
-              ((consumption - 200) *
-                tariff_data[0].energy_consumption_tariff[2018].Q2[6] +
-                service_charge) *
-              0.15;
-          }
-        } else if (quarter == "Quarter3") {
-          if (consumption <= 50) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2018].Q3[0];
-            service_charge = tariff_data[0].service_charge[2018].Q3[0];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-          } else if (consumption > 50 && consumption <= 100) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2018].Q3[1];
-            service_charge = tariff_data[0].service_charge[2018].Q3[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-          } else if (consumption > 100 && consumption <= 200) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2018].Q3[2];
-            service_charge = tariff_data[0].service_charge[2018].Q3[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-          } else if (consumption > 200 && consumption <= 300) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2018].Q3[3];
-            service_charge = tariff_data[0].service_charge[2018].Q3[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-            vat =
-              ((consumption - 200) *
-                tariff_data[0].energy_consumption_tariff[2018].Q3[3] +
-                service_charge) *
-              0.15;
-          } else if (consumption > 300 && consumption <= 400) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2018].Q3[4];
-            service_charge = tariff_data[0].service_charge[2018].Q3[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-            vat =
-              ((consumption - 200) *
-                tariff_data[0].energy_consumption_tariff[2018].Q3[4] +
-                service_charge) *
-              0.15;
-          } else if (consumption > 400 && consumption <= 500) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2018].Q3[5];
-            service_charge = tariff_data[0].service_charge[2018].Q3[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-            vat =
-              ((consumption - 200) *
-                tariff_data[0].energy_consumption_tariff[2018].Q3[5] +
-                service_charge) *
-              0.15;
-          } else if (consumption > 500) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2018].Q3[6];
-            service_charge = tariff_data[0].service_charge[2018].Q3[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-            vat =
-              ((consumption - 200) *
-                tariff_data[0].energy_consumption_tariff[2018].Q3[6] +
-                service_charge) *
-              0.15;
-          }
-        } else if (quarter == "Quarter4") {
-          if (consumption <= 50) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2018].Q4[0];
-            service_charge = tariff_data[0].service_charge[2018].Q4[0];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-          } else if (consumption > 50 && consumption <= 100) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2018].Q4[1];
-            service_charge = tariff_data[0].service_charge[2018].Q4[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-          } else if (consumption > 100 && consumption <= 200) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2018].Q4[2];
-            service_charge = tariff_data[0].service_charge[2018].Q4[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-          } else if (consumption > 200 && consumption <= 300) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2018].Q4[3];
-            service_charge = tariff_data[0].service_charge[2018].Q4[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-            vat =
-              ((consumption - 200) *
-                tariff_data[0].energy_consumption_tariff[2018].Q4[3] +
-                service_charge) *
-              0.15;
-          } else if (consumption > 300 && consumption <= 400) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2018].Q4[4];
-            service_charge = tariff_data[0].service_charge[2018].Q4[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-            vat =
-              ((consumption - 200) *
-                tariff_data[0].energy_consumption_tariff[2018].Q4[4] +
-                service_charge) *
-              0.15;
-          } else if (consumption > 400 && consumption <= 500) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2018].Q4[5];
-            service_charge = tariff_data[0].service_charge[2018].Q4[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-            vat =
-              ((consumption - 200) *
-                tariff_data[0].energy_consumption_tariff[2018].Q4[5] +
-                service_charge) *
-              0.15;
-          } else if (consumption > 500) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2018].Q4[6];
-            service_charge = tariff_data[0].service_charge[2018].Q4[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-            vat =
-              ((consumption - 200) *
-                tariff_data[0].energy_consumption_tariff[2018].Q4[6] +
-                service_charge) *
-              0.15;
-          }
-        }
-        break;
-      case "2019":
-        if (quarter == "Quarter1") {
-          if (consumption <= 50) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2019].Q1[0];
-            service_charge = tariff_data[0].service_charge[2019].Q1[0];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-          } else if (consumption > 50 && consumption <= 100) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2019].Q1[1];
-            service_charge = tariff_data[0].service_charge[2019].Q1[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-          } else if (consumption > 100 && consumption <= 200) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2019].Q1[2];
-            service_charge = tariff_data[0].service_charge[2019].Q1[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-          } else if (consumption > 200 && consumption <= 300) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2019].Q1[3];
-            service_charge = tariff_data[0].service_charge[2019].Q1[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-            vat =
-              ((consumption - 200) *
-                tariff_data[0].energy_consumption_tariff[2019].Q1[3] +
-                service_charge) *
-              0.15;
-          } else if (consumption > 300 && consumption <= 400) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2019].Q1[4];
-            service_charge = tariff_data[0].service_charge[2019].Q1[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-            vat =
-              ((consumption - 200) *
-                tariff_data[0].energy_consumption_tariff[2019].Q1[4] +
-                service_charge) *
-              0.15;
-          } else if (consumption > 400 && consumption <= 500) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2019].Q1[5];
-            service_charge = tariff_data[0].service_charge[2019].Q1[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-            vat =
-              ((consumption - 200) *
-                tariff_data[0].energy_consumption_tariff[2019].Q1[5] +
-                service_charge) *
-              0.15;
-          } else if (consumption > 500) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2019].Q1[6];
-            service_charge = tariff_data[0].service_charge[2019].Q1[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-            vat =
-              ((consumption - 200) *
-                tariff_data[0].energy_consumption_tariff[2019].Q1[6] +
-                service_charge) *
-              0.15;
-          }
-        } else if (quarter == "Quarter2") {
-          if (consumption <= 50) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2019].Q2[0];
-            service_charge = tariff_data[0].service_charge[2019].Q2[0];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-          } else if (consumption > 50 && consumption <= 100) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2019].Q2[1];
-            service_charge = tariff_data[0].service_charge[2019].Q2[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-          } else if (consumption > 100 && consumption <= 200) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2019].Q2[2];
-            service_charge = tariff_data[0].service_charge[2019].Q2[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-          } else if (consumption > 200 && consumption <= 300) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2019].Q2[3];
-            service_charge = tariff_data[0].service_charge[2019].Q2[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-            vat =
-              ((consumption - 200) *
-                tariff_data[0].energy_consumption_tariff[2019].Q2[3] +
-                service_charge) *
-              0.15;
-          } else if (consumption > 300 && consumption <= 400) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2019].Q2[4];
-            service_charge = tariff_data[0].service_charge[2019].Q2[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-            vat =
-              ((consumption - 200) *
-                tariff_data[0].energy_consumption_tariff[2019].Q2[4] +
-                service_charge) *
-              0.15;
-          } else if (consumption > 400 && consumption <= 500) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2019].Q2[5];
-            service_charge = tariff_data[0].service_charge[2019].Q2[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-            vat =
-              ((consumption - 200) *
-                tariff_data[0].energy_consumption_tariff[2019].Q2[5] +
-                service_charge) *
-              0.15;
-          } else if (consumption > 500) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2019].Q2[6];
-            service_charge = tariff_data[0].service_charge[2019].Q2[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-            vat =
-              ((consumption - 200) *
-                tariff_data[0].energy_consumption_tariff[2019].Q2[6] +
-                service_charge) *
-              0.15;
-          }
-        } else if (quarter == "Quarter3") {
-          if (consumption <= 50) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2019].Q3[0];
-            service_charge = tariff_data[0].service_charge[2019].Q3[0];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-          } else if (consumption > 50 && consumption <= 100) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2019].Q3[1];
-            service_charge = tariff_data[0].service_charge[2019].Q3[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-          } else if (consumption > 100 && consumption <= 200) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2019].Q3[2];
-            service_charge = tariff_data[0].service_charge[2019].Q3[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-          } else if (consumption > 200 && consumption <= 300) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2019].Q3[3];
-            service_charge = tariff_data[0].service_charge[2019].Q3[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-            vat =
-              ((consumption - 200) *
-                tariff_data[0].energy_consumption_tariff[2019].Q3[3] +
-                service_charge) *
-              0.15;
-          } else if (consumption > 300 && consumption <= 400) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2019].Q3[4];
-            service_charge = tariff_data[0].service_charge[2019].Q3[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-            vat =
-              ((consumption - 200) *
-                tariff_data[0].energy_consumption_tariff[2019].Q3[4] +
-                service_charge) *
-              0.15;
-          } else if (consumption > 400 && consumption <= 500) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2019].Q3[5];
-            service_charge = tariff_data[0].service_charge[2019].Q3[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-            vat =
-              ((consumption - 200) *
-                tariff_data[0].energy_consumption_tariff[2019].Q3[5] +
-                service_charge) *
-              0.15;
-          } else if (consumption > 500) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2019].Q3[6];
-            service_charge = tariff_data[0].service_charge[2019].Q3[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-            vat =
-              ((consumption - 200) *
-                tariff_data[0].energy_consumption_tariff[2019].Q3[6] +
-                service_charge) *
-              0.15;
-          }
-        } else if (quarter == "Quarter4") {
-          if (consumption <= 50) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2019].Q4[0];
-            service_charge = tariff_data[0].service_charge[2019].Q4[0];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-          } else if (consumption > 50 && consumption <= 100) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2019].Q4[1];
-            service_charge = tariff_data[0].service_charge[2019].Q4[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-          } else if (consumption > 100 && consumption <= 200) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2019].Q4[2];
-            service_charge = tariff_data[0].service_charge[2019].Q4[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-          } else if (consumption > 200 && consumption <= 300) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2019].Q4[3];
-            service_charge = tariff_data[0].service_charge[2019].Q4[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-            vat =
-              ((consumption - 200) *
-                tariff_data[0].energy_consumption_tariff[2019].Q4[3] +
-                service_charge) *
-              0.15;
-          } else if (consumption > 300 && consumption <= 400) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2019].Q4[4];
-            service_charge = tariff_data[0].service_charge[2019].Q4[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-            vat =
-              ((consumption - 200) *
-                tariff_data[0].energy_consumption_tariff[2019].Q4[4] +
-                service_charge) *
-              0.15;
-          } else if (consumption > 400 && consumption <= 500) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2019].Q4[5];
-            service_charge = tariff_data[0].service_charge[2019].Q4[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-            vat =
-              ((consumption - 200) *
-                tariff_data[0].energy_consumption_tariff[2019].Q4[5] +
-                service_charge) *
-              0.15;
-          } else if (consumption > 500) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2019].Q4[6];
-            service_charge = tariff_data[0].service_charge[2019].Q4[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-            vat =
-              ((consumption - 200) *
-                tariff_data[0].energy_consumption_tariff[2019].Q4[6] +
-                service_charge) *
-              0.15;
-          }
-        }
-        break;
-      case "2020":
-        if (quarter == "Quarter1") {
-          if (consumption <= 50) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2020].Q1[0];
-            service_charge = tariff_data[0].service_charge[2020].Q1[0];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-          } else if (consumption > 50 && consumption <= 100) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2020].Q1[1];
-            service_charge = tariff_data[0].service_charge[2020].Q1[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-          } else if (consumption > 100 && consumption <= 200) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2020].Q1[2];
-            service_charge = tariff_data[0].service_charge[2020].Q1[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-          } else if (consumption > 200 && consumption <= 300) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2020].Q1[3];
-            service_charge = tariff_data[0].service_charge[2020].Q1[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-            vat =
-              ((consumption - 200) *
-                tariff_data[0].energy_consumption_tariff[2020].Q1[3] +
-                service_charge) *
-              0.15;
-          } else if (consumption > 300 && consumption <= 400) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2020].Q1[4];
-            service_charge = tariff_data[0].service_charge[2020].Q1[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-            vat =
-              ((consumption - 200) *
-                tariff_data[0].energy_consumption_tariff[2020].Q1[4] +
-                service_charge) *
-              0.15;
-          } else if (consumption > 400 && consumption <= 500) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2020].Q1[5];
-            service_charge = tariff_data[0].service_charge[2020].Q1[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-            vat =
-              ((consumption - 200) *
-                tariff_data[0].energy_consumption_tariff[2020].Q1[5] +
-                service_charge) *
-              0.15;
-          } else if (consumption > 500) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2020].Q1[6];
-            service_charge = tariff_data[0].service_charge[2020].Q1[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-            vat =
-              ((consumption - 200) *
-                tariff_data[0].energy_consumption_tariff[2020].Q1[6] +
-                service_charge) *
-              0.15;
-          }
-        } else if (quarter == "Quarter2") {
-          if (consumption <= 50) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2020].Q2[0];
-            service_charge = tariff_data[0].service_charge[2020].Q2[0];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-          } else if (consumption > 50 && consumption <= 100) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2020].Q2[1];
-            service_charge = tariff_data[0].service_charge[2020].Q2[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-          } else if (consumption > 100 && consumption <= 200) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2020].Q2[2];
-            service_charge = tariff_data[0].service_charge[2020].Q2[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-          } else if (consumption > 200 && consumption <= 300) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2020].Q2[3];
-            service_charge = tariff_data[0].service_charge[2020].Q2[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-            vat =
-              ((consumption - 200) *
-                tariff_data[0].energy_consumption_tariff[2020].Q2[3] +
-                service_charge) *
-              0.15;
-          } else if (consumption > 300 && consumption <= 400) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2020].Q2[4];
-            service_charge = tariff_data[0].service_charge[2020].Q2[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-            vat =
-              ((consumption - 200) *
-                tariff_data[0].energy_consumption_tariff[2020].Q2[4] +
-                service_charge) *
-              0.15;
-          } else if (consumption > 400 && consumption <= 500) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2020].Q2[5];
-            service_charge = tariff_data[0].service_charge[2020].Q2[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-            vat =
-              ((consumption - 200) *
-                tariff_data[0].energy_consumption_tariff[2020].Q2[5] +
-                service_charge) *
-              0.15;
-          } else if (consumption > 500) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2020].Q2[6];
-            service_charge = tariff_data[0].service_charge[2020].Q2[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-            vat =
-              ((consumption - 200) *
-                tariff_data[0].energy_consumption_tariff[2020].Q2[6] +
-                service_charge) *
-              0.15;
-          }
-        } else if (quarter == "Quarter3") {
-          if (consumption <= 50) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2020].Q3[0];
-            service_charge = tariff_data[0].service_charge[2020].Q3[0];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-          } else if (consumption > 50 && consumption <= 100) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2020].Q3[1];
-            service_charge = tariff_data[0].service_charge[2020].Q3[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-          } else if (consumption > 100 && consumption <= 200) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2020].Q3[2];
-            service_charge = tariff_data[0].service_charge[2020].Q3[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-          } else if (consumption > 200 && consumption <= 300) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2020].Q3[3];
-            service_charge = tariff_data[0].service_charge[2020].Q3[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-            vat =
-              ((consumption - 200) *
-                tariff_data[0].energy_consumption_tariff[2020].Q3[3] +
-                service_charge) *
-              0.15;
-          } else if (consumption > 300 && consumption <= 400) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2020].Q3[4];
-            service_charge = tariff_data[0].service_charge[2020].Q3[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-            vat =
-              ((consumption - 200) *
-                tariff_data[0].energy_consumption_tariff[2020].Q3[4] +
-                service_charge) *
-              0.15;
-          } else if (consumption > 400 && consumption <= 500) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2020].Q3[5];
-            service_charge = tariff_data[0].service_charge[2020].Q3[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-            vat =
-              ((consumption - 200) *
-                tariff_data[0].energy_consumption_tariff[2020].Q3[5] +
-                service_charge) *
-              0.15;
-          } else if (consumption > 500) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2020].Q3[6];
-            service_charge = tariff_data[0].service_charge[2020].Q3[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-            vat =
-              ((consumption - 200) *
-                tariff_data[0].energy_consumption_tariff[2020].Q3[6] +
-                service_charge) *
-              0.15;
-          }
-        } else if (quarter == "Quarter4") {
-          if (consumption <= 50) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2020].Q4[0];
-            service_charge = tariff_data[0].service_charge[2020].Q4[0];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-          } else if (consumption > 50 && consumption <= 100) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2020].Q4[1];
-            service_charge = tariff_data[0].service_charge[2020].Q4[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-          } else if (consumption > 100 && consumption <= 200) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2020].Q4[2];
-            service_charge = tariff_data[0].service_charge[2020].Q4[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-          } else if (consumption > 200 && consumption <= 300) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2020].Q4[3];
-            service_charge = tariff_data[0].service_charge[2020].Q4[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-            vat =
-              ((consumption - 200) *
-                tariff_data[0].energy_consumption_tariff[2020].Q4[3] +
-                service_charge) *
-              0.15;
-          } else if (consumption > 300 && consumption <= 400) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2020].Q4[4];
-            service_charge = tariff_data[0].service_charge[2020].Q4[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-            vat =
-              ((consumption - 200) *
-                tariff_data[0].energy_consumption_tariff[2020].Q4[4] +
-                service_charge) *
-              0.15;
-          } else if (consumption > 400 && consumption <= 500) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2020].Q4[5];
-            service_charge = tariff_data[0].service_charge[2020].Q4[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-            vat =
-              ((consumption - 200) *
-                tariff_data[0].energy_consumption_tariff[2020].Q4[5] +
-                service_charge) *
-              0.15;
-          } else if (consumption > 500) {
-            energy_bill =
-              consumption *
-              tariff_data[0].energy_consumption_tariff[2020].Q4[6];
-            service_charge = tariff_data[0].service_charge[2020].Q4[1];
-            reg_fee = (energy_bill + service_charge) * 0.005;
-            ebc_fee = 10;
-            vat =
-              ((consumption - 200) *
-                tariff_data[0].energy_consumption_tariff[2020].Q4[6] +
-                service_charge) *
-              0.15;
-          }
-        }
-        break;
-      default:
-        break;
+        consume.textContent = "Consumption: " + consumption.toFixed(2) + " KWh";
+        energyBill.textContent =
+          "Energy Consumption Bill: " + energy_bill.toFixed(2) + " ETB";
+        serviceCharge.textContent =
+          "Service Charge: " + service_charge + " ETB";
+        regulatoryFee.textContent =
+          "Regulatory Fee: " + reg_fee.toFixed(2) + " ETB";
+        VAT.textContent = "Value Added Tax (VAT): " + vat.toFixed(2) + " ETB";
+        ebcFee.textContent = "EBC TV Fee: " + ebc_fee + " ETB";
+        total.textContent =
+          "Your total bill: " +
+          (energy_bill + service_charge + reg_fee + vat + ebc_fee).toFixed(2) +
+          " ETB";
+        remark.textContent = "This is remark";
+        calculateBill();
+      }
     }
-    consume.textContent = "Consumption: "+consumption.toFixed(2)+" KWh";
-    energyBill.textContent = "Energy Consumption Bill: "+energy_bill.toFixed(2)+" ETB";
-    serviceCharge.textContent = "Service Charge: "+service_charge+" ETB";
-    regulatoryFee.textContent = "Regulatory Fee: "+reg_fee.toFixed(2)+" ETB";
-    VAT.textContent = "Value Added Tax (VAT): "+vat.toFixed(2)+" ETB";
-    ebcFee.textContent = "EBC TV Fee: "+ebc_fee+" ETB";
-    total.textContent = "Your total bill: " +(energy_bill+service_charge+reg_fee+vat+ebc_fee).toFixed(2)+" ETB";
-    remark.textContent = "This is remark"
-  }
-}
 }
