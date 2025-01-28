@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EEU Electric Bill Calculator</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon" />
+  </head>
+  <body>
+    <div id="frames">
+      <div class="container hint">
+        <a href="index.html">
+          <img
+            src="./images/eeu_image.jpg"
+            alt="EEU logo"
+            style="border-radius: 20%"
+          />
+        </a>
+        <h2 class="title" id="title">EEU Electric Bill Calculator</h2>
+        <div class="input_data_container">
+          <label for="type_of_customer">Type of Customer</label>
+          <select name="type_of_customer" id="type_of_customer">
+            <option value="" selected disabled>
+              Select Type of Customer Here
+            </option>
+            <option value="Domestic">Domestic</option>
+            <option value="Commercial and General Single Phase">
+              Commercial and General 1 Phase
+            </option>
+            <option value="Commercial and General Three Phase">
+              Commercial and General 3 Phase
+            </option>
+            <option value="Industry">Industry</option>
+          </select>
+        </div>
+      </div>
+      <iframe
+        frameborder="0"
+        width="60%"
+        class="hint"
+        scrolling="no"
+        id="myFrame"
+      ></iframe>
+
+      <iframe
+        src="hint.html"
+        frameborder="0"
+        class="hint"
+        width="18%"
+      ></iframe>
+    </div>
+    <script src="script.js"></script>
+    <footer>
+      <div class="footer">
+        <div class="foot">
+          <p>Light For All</p>
+          <p>&copy; Lemma Tadesse 2025 Ethiopian Electric Utility</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
