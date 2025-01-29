@@ -961,7 +961,7 @@ function calculateBill() {
             break;
         }
       } else if (staff == "active" || staff == "retired") {
-        return (resultText.textContent = "Under Development");
+        return (resultText.textContent = "Under Development Coming Soon");
       }
       consume.textContent = "Consumption: " + consumption.toFixed(2) + " KWh";
       energyBill.textContent =
