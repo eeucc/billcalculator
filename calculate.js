@@ -132,41 +132,48 @@ const tariff_data = [
   },
 ];
 //Calculate Bill
-function calculateBill() {
-  let consumption = 0;
-  let energy_bill = 0;
-  let service_charge = 0;
-  let reg_fee = 0;
-  let vat = 0;
-  let ebc_fee = 0;
-  let demand_charge = 0;
-  let pf_punishment = 0;
-  const previous_reading = document.getElementById("previous_reading");
-  const current_reading = document.getElementById("current_reading");
-  const year = document.getElementById("bill_year").value;
-  const previousReading = parseFloat(previous_reading.value);
-  const currentReading = parseFloat(current_reading.value);
-  const quarter = document.getElementById("bill_term").value;
-  const resultText = document.getElementById("result");
-  const energyBill = document.getElementById("energyBill");
-  const serviceCharge = document.getElementById("serviceCharge");
-  const regulatoryFee = document.getElementById("regulatoryFee");
-  const VAT = document.getElementById("vat");
-  const ebcFee = document.getElementById("ebcFee");
-  const total = document.getElementById("total");
-  const consume = document.getElementById("consumption");
-  const remark = document.getElementById("remark");
-  const staff = document.getElementById("staff").value;
-  if (
-    isNaN(previousReading) ||
-    isNaN(currentReading) ||
-    currentReading < previousReading ||
-    (currentReading <= 0 || previousReading < 0)
-  ) {
-    return (resultText.textContent = "Please Enter Valid Required Data");
-  } else {
-    if (year == "" && quarter == "") {
-      resultText.textContent = "Please Enter Year and Quarter";
+document
+  .getElementById("calculate")
+  .addEventListener("click", function calculateBill() {
+    let consumption = 0;
+    let energy_bill = 0;
+    let service_charge = 0;
+    let reg_fee = 0;
+    let vat = 0;
+    let ebc_fee = 0;
+    let demand_charge = 0;
+    let pf_punishment = 0;
+    const previous_reading = document.getElementById("previous_reading");
+    const current_reading = document.getElementById("current_reading");
+    const year = document.getElementById("bill_year").value;
+    const previousReading = parseFloat(previous_reading.value);
+    const currentReading = parseFloat(current_reading.value);
+    const quarter = document.getElementById("bill_term").value;
+    const resultText = document.getElementById("result");
+    const energyBill = document.getElementById("energyBill");
+    const serviceCharge = document.getElementById("serviceCharge");
+    const regulatoryFee = document.getElementById("regulatoryFee");
+    const VAT = document.getElementById("vat");
+    const ebcFee = document.getElementById("ebcFee");
+    const total = document.getElementById("total");
+    const consume = document.getElementById("consumption");
+    const remark = document.getElementById("remark");
+    const staff = document.getElementById("staff").value;
+
+    resultText.textContent = "";
+
+    // Check if fields are filled
+    if (!year || !currentReading || !quarter) {
+      resultText.textContent = "Please fill in all fields.";
+      return;
+    }
+
+    if (
+      currentReading < previousReading ||
+      currentReading <= 0 ||
+      previousReading < 0
+    ) {
+      return (resultText.textContent = "Please Enter Valid Required Data");
     } else {
       consumption = currentReading - previousReading;
       if (staff == "no") {
@@ -963,20 +970,28 @@ function calculateBill() {
       } else if (staff == "active" || staff == "retired") {
         return (resultText.textContent = "Under Development Coming Soon");
       }
-      consume.textContent = "Consumption: " + consumption.toFixed(2) + " KWh";
-      energyBill.textContent =
-        "Energy Consumption Bill: " + energy_bill.toFixed(2) + " ETB";
-      serviceCharge.textContent = "Service Charge: " + service_charge + " ETB";
-      regulatoryFee.textContent =
-        "Regulatory Fee: " + reg_fee.toFixed(2) + " ETB";
-      VAT.textContent = "Value Added Tax (VAT): " + vat.toFixed(2) + " ETB";
-      ebcFee.textContent = "EBC TV Fee: " + ebc_fee + " ETB";
-      total.textContent =
+
+      resultText.innerHTML +=
+        "Consumption: " +
+        consumption.toFixed(2) +
+        " KWh<br><br>" +
+        "Energy Consumption Bill: " +
+        energy_bill.toFixed(2) +
+        " ETB<br><br>" +
+        "Service Charge: " +
+        service_charge +
+        " ETB<br><br>" +
+        "Regulatory Fee: " +
+        reg_fee.toFixed(2) +
+        " ETB<br><br>" +
+        "Value Added Tax (VAT): " +
+        vat.toFixed(2) +
+        " ETB<br><br>" +
+        "EBC TV Fee: " +
+        ebc_fee +
+        " ETB<br><br><br>" +
         "Your total bill: " +
         (energy_bill + service_charge + reg_fee + vat + ebc_fee).toFixed(2) +
         " ETB";
-      remark.textContent =
-        "Tip: Keep in mind that there may be some deviation on months of September, December, March and June since they share another quarter tariff a little bit";
     }
-  }
-}
+  });
