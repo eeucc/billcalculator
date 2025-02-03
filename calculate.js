@@ -163,11 +163,10 @@ document
     resultText.textContent = "";
 
     // Check if fields are filled
-    if (!year || !currentReading || !quarter) {
+    if (!currentReading || !quarter) {
       resultText.textContent = "Please fill in all fields.";
       return;
     }
-
     if (
       currentReading < previousReading ||
       currentReading <= 0 ||
@@ -179,6 +178,7 @@ document
       if (staff == "no") {
         switch (year) {
           case "2017":
+          case "":
             let tariff17 = tariff_data[0].energy_consumption_tariff[2017];
             let service17 = tariff_data[0].service_charge[2017];
             if (quarter == "Quarter1") {
@@ -971,27 +971,22 @@ document
         return (resultText.textContent = "Under Development Coming Soon");
       }
 
-      resultText.innerHTML +=
-        "Consumption: " +
-        consumption.toFixed(2) +
-        " KWh<br><br>" +
-        "Energy Consumption Bill: " +
-        energy_bill.toFixed(2) +
-        " ETB<br><br>" +
-        "Service Charge: " +
+      resultText.innerHTML += `Consumption: ${consumption.toFixed(
+        2
+      )} KWh<br><br>Energy Consumption Bill: ${energy_bill.toFixed(
+        2
+      )} ETB<br><br>Service Charge: ${service_charge} ETB<br><br>Regulatory Fee: ${reg_fee.toFixed(
+        2
+      )} ETB<br><br>Value Added Tax (VAT): ${vat.toFixed(
+        2
+      )} ETB<br><br>EBC TV Fee: ${ebc_fee} ETB<br><br><br>Your total bill: ${(
+        energy_bill +
         service_charge +
-        " ETB<br><br>" +
-        "Regulatory Fee: " +
-        reg_fee.toFixed(2) +
-        " ETB<br><br>" +
-        "Value Added Tax (VAT): " +
-        vat.toFixed(2) +
-        " ETB<br><br>" +
-        "EBC TV Fee: " +
-        ebc_fee +
-        " ETB<br><br><br>" +
-        "Your total bill: " +
-        (energy_bill + service_charge + reg_fee + vat + ebc_fee).toFixed(2) +
-        " ETB";
+        reg_fee +
+        vat +
+        ebc_fee
+      ).toFixed(
+        2
+      )} ETB<br><br><br><br><br><br><br>Tip: Keep in mind that bill of September, December, March and June may be deffered from real value a little bit since they share tariff of two different quarters.`;
     }
   });

@@ -13,8 +13,17 @@ dropdown.addEventListener("change", function () {
     case "Commercial and General Three Phase":
       myframe.src = "general3phase.html";
       break;
-    case "Industry":
-      myframe.src = "industry.html";
+    case "smallindustry":
+      myframe.src = "smallindustry.html";
+      break;
+    case "mediumindustry":
+      myframe.src = "mediumindustry.html";
+      break;
+    case "Domestic_prepaid":
+      myframe.src = "domestic_prepaid.html";
+      break;
+    case "streetlight":
+      myframe.src = "streetlight.html";
       break;
     default:
       break;

@@ -11,7 +11,7 @@ html, body {
 }
 
 #frames{
-    height: 80%;
+    height: 90%;
 
 }
 
@@ -183,6 +183,6 @@ footer {
   overflow-x: hidden;
 }
 
-#remark {
-  text-align: center;
+a{
+  text-decoration: none;
 }

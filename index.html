@@ -19,19 +19,22 @@
         </a>
         <h2 class="title" id="title">EEU Electric Bill Calculator</h2>
         <div class="input_data_container">
-          <label for="type_of_customer">Type of Customer</label>
+          <label for="type_of_customer">Type of Tariff</label>
           <select name="type_of_customer" id="type_of_customer">
             <option value="" selected disabled>
-              Select Type of Customer Here
+              Select Type of Tariff Here
             </option>
             <option value="Domestic">Domestic</option>
+            <option value="Domestic_prepaid">Domestic Prepaid</option>
             <option value="Commercial and General Single Phase">
               Commercial and General 1 Phase
             </option>
             <option value="Commercial and General Three Phase">
               Commercial and General 3 Phase
             </option>
-            <option value="Industry">Industry</option>
+            <option value="smallindustry">Small Industry (380V)</option>
+            <option value="mediumindustry">Medium Industry (>=15KV)</option>
+            <option value="streetlight">Street Light</option>
           </select>
         </div>
       </div>
@@ -55,8 +58,7 @@
       <div class="footer">
         <div class="foot">
           <h4>Contact</h4>
-          <p>Email: lemmatadesse908@gmail.com</p>
-          <p>Phone: 0927112871</p>
+          <p><a href="mailto: lemmatadesse908@gmail.com" title="Send email" target="_blank">Email: lemmatadesse908@gmail.com</a></p>
           <p>&copy; Lemma Tadesse 2025 @ Ethiopian Electric Utility Contact Center</p>
         </div>
       </div>

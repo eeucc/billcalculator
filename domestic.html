@@ -10,7 +10,7 @@
       <div class="left">
         <h2 class="title" id="title">
           <marquee dir="auto" behavior="alternate"
-            >Domestic Customer Bill Calculator</marquee
+            >Domestic Tariff Bill Calculator</marquee
           >
         </h2>
         <div id="staff_select">
@@ -26,12 +26,10 @@
           <option value="" selected disabled>
             Select Ethiopian Calendar Year Here
           </option>
-          <script>
-            const currentYear = new Date().getFullYear();
-            for (let year = currentYear; year >= 1900; year--) {
-              document.write(`<option value="${year}">${year}</option>`);
-            }
-          </script>
+          <option value="2017">2017</option>
+          <option value="2018">2018</option>
+          <option value="2019">2019</option>
+          <option value="2020">2020</option>
         </select>
         <div class="input_data_container">
           <label for="previous_reading">Previous Reading (Kwh)</label>
