@@ -29,3 +29,31 @@ dropdown.addEventListener("change", function () {
       break;
   }
 });
+
+function advanced(){
+  switch (dropdown.value) {
+    case "Domestic":
+      myframe.src = "advanceddomestic.html";
+      break;
+    case "Commercial and General Single Phase":
+      myframe.src = "advancedgeneral1phase.html";
+      break;
+    case "Commercial and General Three Phase":
+      myframe.src = "advancedgeneral3phase.html";
+      break;
+    case "smallindustry":
+      myframe.src = "advancedsmallindustry.html";
+      break;
+    case "mediumindustry":
+      myframe.src = "advancedmediumindustry.html";
+      break;
+    case "Domestic_prepaid":
+      myframe.src = "advanceddomestic_prepaid.html";
+      break;
+    case "streetlight":
+      myframe.src = "advancedstreetlight.html";
+      break;
+    default:
+      break;
+  }
+}
