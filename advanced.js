@@ -219,6 +219,7 @@ document
         return (resultText.textContent = "Under Development Coming Soon");
       }
       const daysCount = calculateDaysPerMonth(sDate, eDate);
+      const length = Object.keys(daysCount).length;
       resultText.innerHTML += `Days In Each Month: ${JSON.stringify(daysCount, null, 2)}<br><br>Billing Days:  ${
         (eDate - sDate) / (1000 * 3600 * 24) + 1
       }<br><br>Consumption: ${consumption.toFixed(
